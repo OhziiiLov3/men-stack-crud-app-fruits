@@ -41,5 +41,28 @@ exports.deleteFruit = async  (req, res)=> {
 };
 
 
+exports.editFruit = async  (req, res)=> {
+   const foundFruit = await Fruit.findById(req.params.fruitId)
+   console.log(foundFruit)
+  res.render("fruits/edit.ejs",{
+    fruit: foundFruit,
+  });
+};
+
+
+exports.updateFruit = async  (req, res)=> {
+    if (req.body.isReadyToEat === "on") {
+        req.body.isReadyToEat = true;
+      } else {
+        req.body.isReadyToEat = false;
+      }
+    await Fruit.findByIdAndUpdate(req.params.fruitId, req.body);
+  res.redirect(`/fruits/${req.params.fruitId}`);
+};
+
+
+
+
+
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/user.css" />
+    <title>Users</title>
+</head>
+<body>
+    <h1>Get Users from API Page</h1>
+    <a href="/">Back to fruits</a>
+    <div class="container">
+        <% users.forEach(user => { %>
+            <a href="/users/<%= user.id %>" style="text-decoration: none; display: block; color: blue;">
+                <div class="card">
+                    <h2 style="color: blue"><%= user.name %> (@<%= user.username %>)</h2>
+                </div>
+            </a>
+            
+            <% }) %>
+        </div>
+</body>
+</html>
