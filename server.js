@@ -1,5 +1,7 @@
 const express = require ("express");
 const dotenv = require("dotenv");
+const methodOverride = require("method-override");
+const morgan = require("morgan");
 const connectDB = require("./config/db.js");
 const fruitRouter = require("./routes/fruitRouter.js")
 
@@ -11,7 +13,8 @@ connectDB();
 
 // middleware parses incoming request bodies
 app.use(express.urlencoded({ extended: false }));
-
+app.use(methodOverride("_method")); 
+app.use(morgan("dev")); 
 
 
 
